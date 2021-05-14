@@ -170,26 +170,6 @@ namespace CrocoKit_Sensor {
         return Math.idiv(d, 58);
     }
 
-    //% blockId=CrocoKit_Sensor_UltrasonicV2 block="Ultrasonic for V2|Trig %Trig|Echo %Echo"
-    //% color="#228B22"
-    //% weight=97
-    //% blockGap=20
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
-    export function UltrasonicV2(Trig: DigitalPin, Echo: DigitalPin): number {
-        //send pulse
-        pins.setPull(Trig, PinPullMode.PullNone);
-        pins.digitalWritePin(Trig, 0);
-        control.waitMicros(4);
-        pins.digitalWritePin(Trig, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(Trig, 0);
-
-        //read pulse, maximum distance=500cm
-        const d = pins.pulseIn(Echo, PulseValue.High)/58;   
-
-        return d;
-    }
-
     //% blockId=CrocoKit_Sensor_V2RGBUL block="microbit|V2|RGB|Ultrasonic|Echo %Echo"
     //% color="#228B22"
     //% weight=97
